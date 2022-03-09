@@ -1,20 +1,24 @@
 package hello.world;
+
 /**
  * @author Ahmed Kandil
- * @since 4-3-2022
- * @version 2.0
+ * @since 9-3-2022
+ * @version 1.0
  */
-public class TheSum {
-    static double sum(double[] numbers) {
+public class Average {
+    static double mean(double[] numbers)
+    {
         double sum = 0;
+        double mean;
         for(double number:numbers)
         {
             sum += number;
         }
-        return sum;
+        mean = sum / numbers.length;
+        return mean;
     }
     public static void main(String[] args) {
         double[] numbers = {1,2,3,4};
-        System.out.println(sum(numbers));
+        System.out.println(mean(numbers));
     }
 }
