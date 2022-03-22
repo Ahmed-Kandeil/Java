@@ -8,14 +8,17 @@ import java.awt.event.*;
  * @since 21-3-2022
  * @version 1.0
  */
-public class Password {
+public class Password implements ActionListener {
+
+    static short attempts = 4;
+    static String userName, password, oldPassword = "0000", massage = "";
+    static JFrame window = new JFrame("Adm");
+    static JLabel userNameLabel, passwordLabel, check;
+    static JTextField userNameField;
+    static JPasswordField passwordField;
+    static JButton sginIn;
 
     public static void main(String[] args) {
-        JFrame window = new JFrame("Adm");
-        JLabel userNameLabel, passwordLabel, information;
-        JTextField userNameField;
-        JPasswordField passwordField;
-        JButton sginIn;
 
         userNameLabel = new JLabel("Enter Your User Name :");
         userNameLabel.setBounds(25, 25, 150, 30);
@@ -29,8 +32,8 @@ public class Password {
         passwordField = new JPasswordField("");
         passwordField.setBounds(20, 135, 250, 30);
 
-        information = new JLabel();
-        information.setBounds(25, 155, 250, 60);
+        check = new JLabel();
+        check.setBounds(25, 155, 250, 60);
 
         sginIn = new JButton("Sgin In");
         sginIn.setBounds(100, 225, 100, 30);
@@ -41,7 +44,7 @@ public class Password {
         window.add(passwordLabel);
         window.add(passwordField);
 
-        window.add(information);
+        window.add(check);
 
         window.add(sginIn);
 
@@ -49,27 +52,27 @@ public class Password {
         window.setLayout(null);
         window.setVisible(true);
 
-        sginIn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                short attempts = 3;
-                String userName, password, oldPassword = "0000", massage = "";
-                userName = userNameField.getText();
-                password = new String(passwordField.getPassword());
-                do {
-                    attempts--;
-                    if (attempts <= 3) {
-                        massage = "Wrong Password You Still Have\n";
-                        massage += attempts + " attempts Left";
+        sginIn.addActionListener(new Password());
+    }
 
-                    } else if (attempts == 1) {
-                        massage = "Wrong Password It's Your Last attempt!!!";
-                    } else {
-                        massage = "You Are Fired Ms" + userName;
-                    }
-                    information.setText(massage);
-                } while (password != oldPassword && attempts != 0);
-                massage = "Welcome Back Ms " + userName;
+    public void actionPerformed(ActionEvent e) {
+        userName = userNameField.getText();
+        password = new String(passwordField.getPassword());
+        if (password != oldPassword) {
+            attempts--;
+            if (attempts > 1) {
+                massage = "Wrong Password You Still Have\n";
+                massage += attempts + " attempts Left";
+            } else if (attempts == 1) {
+                massage = "Wrong Password It's Your Last attempt!!!";
+            } else {
+                massage = "You Are Fired Ms " + userName;
             }
-        });
+            check.setText(massage);
+        } else {
+
+            massage = "Welcome Back Ms " + userName;
+            check.setText(massage);
+        }
     }
 }
