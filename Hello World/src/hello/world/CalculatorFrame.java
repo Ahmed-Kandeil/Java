@@ -3,7 +3,7 @@ package hello.world;
 /**
  * @author Ahmed Kandil
  * @since 11-3-2022
- * @version 1.4
+ * @version 2.6
  */
 public class CalculatorFrame extends javax.swing.JFrame {
 
@@ -44,15 +44,18 @@ public class CalculatorFrame extends javax.swing.JFrame {
                 jTextField1.setText(Double.toString(ans));
                 break;
             case 7:
-                ans = Math.toDegrees(Math.sin(number));
+                ans = Math.toRadians(number);
+                ans = Math.sin(ans);
                 jTextField1.setText(Double.toString(ans));
                 break;
             case 8:
-                ans = Math.toDegrees(Math.cos(number));
+                ans = Math.toRadians(number);
+                ans = Math.cos(ans);
                 jTextField1.setText(Double.toString(ans));
                 break;
             case 9:
-                ans = Math.toDegrees(Math.tan(number));
+                ans = Math.toRadians(number);
+                ans = Math.tan(ans);
                 jTextField1.setText(Double.toString(ans));
                 break;
             case 10:
@@ -536,7 +539,11 @@ public class CalculatorFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        jTextField1.setText(jTextField1.getText() + ".");
+        String check = jTextField1.getText();
+        if (!(check.contains("."))) {
+            jTextField1.setText(jTextField1.getText() + ".");
+        }
+
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
