@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GPA {
     public static void main(String[] args) {
         int degree, number = 1;
-        ArrayList<Integer> subjectsDegree = new ArrayList<Integer>();
+        ArrayList<Integer> subjectsDegree = new ArrayList<>();
         float theSum = 0, average;
         Scanner input = new Scanner(System.in);
         for (int i = 0; i < 6; i++) {

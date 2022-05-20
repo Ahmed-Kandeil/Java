@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class RamadanLantern {
 
     public static void main(String[] args) {
-        int rowSize, space, i ,j ,k;
+        int rowSize, space, i ,j;
         Scanner input = new Scanner(System.in);
         System.out.print("Enter The Size Of The Ramadan Lantern => ");
         rowSize = input.nextInt();

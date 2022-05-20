@@ -6,13 +6,13 @@ import java.awt.event.*;
 /**
  * @author Ahmed Kandil
  * @since 21-3-2022
- * @version 1.0
+ * @version 8.3
  */
 public class Password implements ActionListener {
 
     static short attempts = 4;
     static String userName, password, oldPassword = "0000", massage = "";
-    static JFrame window = new JFrame("Adm");
+    static JFrame window = new JFrame("Admin");
     static JLabel userNameLabel, passwordLabel, check;
     static JTextField userNameField;
     static JPasswordField passwordField;
@@ -43,23 +43,23 @@ public class Password implements ActionListener {
         sginIn.addActionListener(new Password());
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         userName = userNameField.getText();
         password = new String(passwordField.getPassword());
-        if (password != oldPassword) {
-            attempts--;
-            if (attempts > 1) {
-                massage = "Wrong Password You Still Have\n";
-                massage += attempts + " attempts Left";
-            } else if (attempts == 1) {
-                massage = "Wrong Password It's Your Last attempt!!!";
-            } else {
-                massage = "You Are Fired Ms " + userName;
-            }
-            check.setText(massage);
+        if (password == oldPassword && attempts != 0) {
+            massage = "Welcome Back Ms ";
+            massage += userName;
         } else {
-            massage = "Welcome Back Ms " + userName;
-            check.setText(massage);
+            --attempts;
+            if (attempts > 0) {
+                massage = "Wrong Password You Still Have";
+                massage += attempts;
+                massage += " Left";
+            } else {
+                massage = "Game Over Baby";
+            }
         }
+        check.setText(massage);
     }
 }

@@ -10,15 +10,9 @@ public class SwitchStatements {
         char theChar = 'A';
         switch (theChar)
         {
-            case 'A':
-                System.out.println("Value Is A");
-                break;
-            case 'B':
-                System.out.println("Value Is B");
-                break;
-            default:
-                System.out.println("Unknown Value");
-                break;
+            case 'A' -> System.out.println("Value Is A");
+            case 'B' -> System.out.println("Value Is B");
+            default -> System.out.println("Unknown Value");
         }
     }
 }
